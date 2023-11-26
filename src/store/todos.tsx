@@ -32,11 +32,11 @@ export interface TodosContext {
 
 export const todosContext = createContext<TodosContext | null>(null);
 
-export const TodosProvider: ({children}: { children: ReactNode }) => void = ({
+export const TodosProvider: ({
   children,
 }: {
   children: ReactNode;
-}) => {
+}) => JSX.Element = ({ children }: { children: ReactNode }) => {
   const [todos, setTodos] = useState<TodoObj[]>(() => {
     const prevData = localStorage?.getItem("todos") || "[]";
     return JSON.parse(prevData);
@@ -53,10 +53,10 @@ export const TodosProvider: ({children}: { children: ReactNode }) => void = ({
         },
         ...prev,
       ];
-      localStorage?.setItem("todos", JSON.stringify(newTodo))
+      localStorage?.setItem("todos", JSON.stringify(newTodo));
       return newTodo;
     });
-      console.log("succesfully added");
+    console.log("succesfully added");
   };
 
   const handleCompleted: (obj: TodoObj) => void = (obj: TodoObj): void => {
@@ -72,7 +72,7 @@ export const TodosProvider: ({children}: { children: ReactNode }) => void = ({
           return item?.id !== obj?.id;
         }),
       ];
-      localStorage?.setItem("todos", JSON.stringify(updatedTodo))
+      localStorage?.setItem("todos", JSON.stringify(updatedTodo));
       return updatedTodo;
     });
     console.log("succesfully completed");
@@ -91,7 +91,7 @@ export const TodosProvider: ({children}: { children: ReactNode }) => void = ({
           return item?.id !== obj?.id;
         }),
       ];
-      localStorage?.setItem("todos", JSON.stringify(updatedTodo))
+      localStorage?.setItem("todos", JSON.stringify(updatedTodo));
       return updatedTodo;
     });
     console.log("succesfully moved to bin");
@@ -104,12 +104,12 @@ export const TodosProvider: ({children}: { children: ReactNode }) => void = ({
           return item?.status !== "bin";
         }),
       ];
-      localStorage?.setItem("todos", JSON.stringify(updatedTodo))
+      localStorage?.setItem("todos", JSON.stringify(updatedTodo));
       return updatedTodo;
     });
     console.log("succesfully cleared trash");
   };
-  
+
   return (
     <todosContext.Provider
       value={{
