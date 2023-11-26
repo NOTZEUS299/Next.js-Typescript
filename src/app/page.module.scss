@@ -1,0 +1,49 @@
+.mainContainer {
+  width: 100%;
+  height: 100vh;
+  background-color: #232323;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .todosContainer {
+    width: 80%;
+    height: max-content;
+    background-color: #011522;
+    border-radius: 8px;
+    z-index: 1;
+    .tools {
+      display: flex;
+      align-items: center;
+      padding: 9px;
+      .circle {
+        padding: 0 4px;
+        .red,
+        .yellow,
+        .green {
+          display: inline-block;
+          align-items: center;
+          width: 10px;
+          height: 10px;
+          padding: 1px;
+          border-radius: 50%;
+        }
+
+        .red {
+          background-color: #ff605c;
+        }
+
+        .yellow {
+          background-color: #ffbd44;
+        }
+
+        .green {
+          background-color: #00ca4e;
+        }
+      }
+    }
+    .todosContent{
+        padding: 9px 18px 18px;
+
+    }
+  }
+}
