@@ -32,7 +32,7 @@ export interface TodosContext {
 
 export const todosContext = createContext<TodosContext | null>(null);
 
-export const TodosProvider: (children: { children: ReactNode }) => void = ({
+export const TodosProvider: ({children}: { children: ReactNode }) => void = ({
   children,
 }: {
   children: ReactNode;
